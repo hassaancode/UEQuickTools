@@ -9,7 +9,7 @@ sys.path.append(script_dir)
 # Import functions from separate modules
 
 from Components.grouping import group_actors_by_type
-from Components.folder_management import delete_empty_folders
+from Components.delete_empty_folders import delete_empty_folders
 
 menu_owner = "Hassaan Ali"
 tool_menus = unreal.ToolMenus.get()

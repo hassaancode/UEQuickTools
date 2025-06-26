@@ -1,6 +1,6 @@
 import unreal
 
-def delete_empty_folders_in_outliner():
+def delete_empty_folders():
     """
     Deletes empty folders in the Unreal Engine 5 scene outliner.
     An empty folder is defined as a folder containing no actors or only other empty folders.
@@ -83,4 +83,4 @@ def delete_empty_folders_in_outliner():
 
 if __name__ == "__main__":
     # Example usage:
-    delete_empty_folders_in_outliner()
+    delete_empty_folders()
