@@ -9,6 +9,7 @@ sys.path.append(script_dir)
 # Import functions from separate modules
 
 from Components.grouping import group_actors_by_type
+from Components.folder_management import delete_empty_folders
 
 menu_owner = "Hassaan Ali"
 tool_menus = unreal.ToolMenus.get()
@@ -26,7 +27,7 @@ class Example_SubMenuEntry(unreal.ToolMenuEntryScript):
 
 # Register function globally for menu execution
 sys.modules["__main__"].group_actors_by_type = group_actors_by_type
-
+sys.modules["__main__"].delete_empty_folders = delete_empty_folders
 # Avoid multiple registrations
 menu_registered = False
 
@@ -72,6 +73,18 @@ def Run():
     script_entry.set_icon("EditorStyle", "SceneOutliner.NewFolderIcon")
     sub_menu.add_menu_entry("ScriptsSection", script_entry)
 
+ # Add "Delete Empty Folders" Button
+    delete_empty_folders_entry = unreal.ToolMenuEntryExtensions.init_menu_entry(
+        menu_owner,
+        "DeleteEmptyFolders",
+        "Delete Empty Folders",
+        "Delete all empty folders in the current level outliner",
+        unreal.ToolMenuStringCommandType.PYTHON,
+        "",
+        "import sys; sys.modules['__main__'].delete_empty_folders()",
+    )
+    sub_menu.add_menu_entry("ScriptsSection", delete_empty_folders_entry)
+    
     # Add "Support" Section
     sub_menu.add_section("SupportSection", "SUPPORT")
 
